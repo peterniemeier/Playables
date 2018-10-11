@@ -25,3 +25,15 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+*.gem
+Gemfile.lock
+*.log
+test/*/tmp
+test/*/public/packs
+gemfiles/*.lock
+*.swp
+/vendor/react
+**/node_modules
+react-builds/build
+coverage/

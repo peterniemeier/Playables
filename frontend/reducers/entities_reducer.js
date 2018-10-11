@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 
-import projectTags from './project_tags_reducer'
-import tags from './tags_reducer';
-import comments from './comments_reducer';
-import steps from './steps_reducer';
-import projects from './projects_reducer';
+// import projectTags from './project_tags_reducer'
+// import tags from './tags_reducer';
+// import comments from './comments_reducer';
+// import steps from './steps_reducer';
+// import projects from './projects_reducer';
 import users from './users_reducer';
 
 export default combineReducers({
@@ -13,5 +13,5 @@ export default combineReducers({
   // comments,
   // steps,
   // projects,
-  // users,
+  users,
 });

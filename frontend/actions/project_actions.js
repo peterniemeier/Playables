@@ -14,11 +14,12 @@ export const receiveProject = (project) => ({
   project
 });
 
-export const receiveComments = ({ review, author }) => ({
+export const receiveComments = ({ comment, author }) => ({
   type: RECEIVE_COMMENTS,
-  review,
+  comment,
   author,
 });
+
 
 export const createComment = comment => dispatch => (
   APIUtil.createComment(comment).then(comment => (

@@ -28,13 +28,13 @@ export const createComment = comment => dispatch => (
 );
 
 export const fetchProjects = filters => dispatch => (
-  APIUtil.fetchBenches(filters).then(projects => (
+  APIUtil.fetchProjects(filters).then(projects => (
     dispatch(receiveProjects(projects))
   ))
 );
 
 export const fetchProject = id => dispatch => (
-  APIUtil.fetchBench(id).then(payload => (
+  APIUtil.fetchProject(id).then(payload => (
     dispatch(receiveProject(payload))
   ))
 );

@@ -31,7 +31,7 @@ gem 'rails_12factor'
 # gem 'mini_magick', '~> 4.8'
 gem 'pry-rails'
 gem 'annotate'
-
+gem 'jquery-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

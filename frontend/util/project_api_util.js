@@ -1,4 +1,4 @@
-export const fetchprojects = data => (
+export const fetchProjects = data => (
   $.ajax({
     method: 'GET',
     url: 'api/projects',

@@ -9,12 +9,12 @@ import {
 } from 'react-router-dom';
 
 import GreetingContainer from './greeting/greeting_container';
-// import SignUpFormContainer from './session_form/signup_form_container';
-// import LogInFormContainer from './session_form/login_form_container';
+import SignUpFormContainer from './session_form/signup_form_container';
+import LogInFormContainer from './session_form/login_form_container';
 // import SearchContainer from './search/search_container';
 // import ProjectShowContainer from './project_show/project_show_container';
 // import ProjectFormContainer from './project_form/project_form_container';
-// import { AuthRoute, ProtectedRoute } from '../util/route_util';
+import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 const App = () => (
   <div>
@@ -23,8 +23,14 @@ const App = () => (
         <h1>Playables</h1>
       </Link>
       <GreetingContainer />
+
+
+
     </header>
 
+
+      <AuthRoute exact path="/login" component={LogInFormContainer} />
+      <AuthRoute exact path="/signup" component={SignUpFormContainer} />
 
   </div>
 );

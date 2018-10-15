@@ -18,21 +18,19 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 const App = () => (
   <div>
-    <header>
+    <header id="greeting">
       <Link to="/" className="header-link">
         <h1>Playables</h1>
       </Link>
       <GreetingContainer />
-
-
-
     </header>
 
 <Switch>
+      <AuthRoute exact path="/" component={LogInFormContainer} />
       <AuthRoute exact path="/login" component={LogInFormContainer} />
       <AuthRoute exact path="/signup" component={SignUpFormContainer} />
-        <Redirect to='/' />
-        </Switch>
+      <Redirect to='/' />
+</Switch>
   </div>
 );
 

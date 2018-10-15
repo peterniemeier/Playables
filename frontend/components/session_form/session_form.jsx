@@ -8,6 +8,11 @@ class SessionForm extends React.Component {
       username: '',
       password: ''
     };
+
+    this.demoUser = {
+      username: 'demouser',
+      password: 'demouser'
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -21,6 +26,11 @@ class SessionForm extends React.Component {
     e.preventDefault();
     const user = Object.assign({}, this.state);
     this.props.processForm(user);
+  }
+
+  handleDemo(e) {
+    e.preventDefault();
+    this.props.processDemo(this.demoUser);
   }
 
   renderErrors() {
@@ -38,32 +48,55 @@ class SessionForm extends React.Component {
   render() {
     return (
       <div className="login-form-container">
+        <div className="content box">
+
         <form onSubmit={this.handleSubmit} className="login-form-box">
-          Playables
-          <br/>
-          Please {this.props.formType} or {this.props.navLink}
-          {this.renderErrors()}
+
+
           <div className="login-form">
+            <br />
+          <p className="session-submit" onClick={(e) => this.handleDemo(e)} value="Continue Demo">Continue Demo</p>
             <br/>
-            <label>Username:
+            <div className="fbutton">
+            <label>
               <input type="text"
                 value={this.state.username}
                 onChange={this.update('username')}
                 className="login-input"
+                placeholder="Username"
               />
             </label>
+            </div>
             <br/>
-            <label>Password:
+            <div class="split">
+            <span class="hr">&nbsp;
+            </span>
+            <span>OR</span>
+            <span class="hr">&nbsp;
+            </span>
+            </div>
+            <div className="fbutton">
+            <label>
               <input type="password"
                 value={this.state.password}
                 onChange={this.update('password')}
                 className="login-input"
+                placeholder="Password"
               />
             </label>
+            </div>
             <br/>
             <input className="session-submit" type="submit" value={this.props.formType} />
           </div>
+
+          <br/>
+          <div className="log-options">
+          Please {this.props.formType} or {this.props.navLink}
+          </div>
+          {this.renderErrors()}
         </form>
+        <h1 class="blur"></h1>
+      </div>
       </div>
     );
   }

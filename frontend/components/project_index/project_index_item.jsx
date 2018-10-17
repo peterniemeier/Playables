@@ -10,7 +10,7 @@ const ProjectIndexItem = ({ project }) => (
 
       <div className='cover-info'>
       <span className='title'>{project.title}</span> <br />
-      <span className='author'>by {project.user.username} in category</span>
+      <span className='author'>by {project.username} in category</span>
       </div>
     </Link>
   </li>

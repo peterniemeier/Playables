@@ -25,7 +25,7 @@ const Greeting = ({ currentUser, logout, processDemo }) => {
       <div className="avatar">
         <img src={window.images.avatar} />
       </div>
-      <p className="header-button" onClick={() => logout()}>Log Out</p>
+      <button className="header-button" onClick={() => logout()}>Log Out</button>
       </div>
     </hgroup>
   );

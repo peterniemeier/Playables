@@ -6,9 +6,6 @@ import { withRouter } from 'react-router-dom';
       // <p className="session-submit" onClick={(e) => processDemo()} value="Continue Demo">Continue Demo</p>
 const Greeting = ({ currentUser, logout, processDemo }) => {
 
-
-
-
   const sessionLinks = () => (
 
     <nav className="login-signup">
@@ -19,11 +16,17 @@ const Greeting = ({ currentUser, logout, processDemo }) => {
     </nav>
   );
   const personalGreeting = () => (
+
     <hgroup className="header-group">
+      <div className="create-playable" onClick={() => window.location.replace("/projects/new")}>
+        Create a Playable
+      </div>
+      <div className="profile-nav">
       <div className="avatar">
         <img src={window.images.avatar} />
       </div>
-      <button className="header-button" onClick={logout}>Log Out</button>
+      <p className="header-button" onClick={() => logout()}>Log Out</p>
+      </div>
     </hgroup>
   );
 

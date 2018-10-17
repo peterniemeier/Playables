@@ -7,7 +7,9 @@ import {login} from './actions/session_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
+
   if (window.currentUser) {
+
     const preloadedState = {
       session: { id: window.currentUser.id },
       entities: {
@@ -21,10 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
     store = configureStore();
 
   }
-  window.getState = store.getState;
-  window.dispatch = store.dispatch;
-  window.signup = signup;
-  window.login = login;
+  // window.getState = store.getState;
+  // window.dispatch = store.dispatch;
+  // window.signup = signup;
+  // window.login = login;
 
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store} />, root);

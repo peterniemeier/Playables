@@ -13,7 +13,7 @@ const projectsReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_PROJECTS:
       return merge({}, state, action.projects);
-      
+
     case RECEIVE_PROJECT:
       project = action.project;
 

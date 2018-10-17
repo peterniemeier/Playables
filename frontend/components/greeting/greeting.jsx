@@ -1,14 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SessionForm from '../session_form/session_form';
+import { withRouter } from 'react-router-dom';
+      // <p className="session-submit" onClick={(e) => processDemo()} value="Continue Demo">Continue Demo</p>
+const Greeting = ({ currentUser, logout, processDemo }) => {
 
 
 
-const Greeting = ({ currentUser, logout }) => {
   const sessionLinks = () => (
+
     <nav className="login-signup">
       <Link to="/login" className="login-link">Login</Link>
       <span className="pipe">|</span>
       <Link to="/signup" className="signup-link">Sign Up</Link>
+
     </nav>
   );
   const personalGreeting = () => (

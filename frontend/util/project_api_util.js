@@ -9,7 +9,7 @@ export const fetchProjects = data => (
 export const fetchProject = id => (
   $.ajax({
     method: 'GET',
-    url: `api/benches/${id}`
+    url: `api/projects/${id}`
   })
 );
 

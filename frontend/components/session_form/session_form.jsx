@@ -25,12 +25,12 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.processForm(user);
+    this.props.processForm(user).then(this.props.history.push(`/`));
   }
 
   handleDemo(e) {
     e.preventDefault();
-    this.props.processDemo(this.demoUser);
+    this.props.processDemo(this.demoUser).then(this.props.history.push(`/`));
   }
 
   renderErrors() {
@@ -48,7 +48,7 @@ class SessionForm extends React.Component {
   render() {
     return (
       <div className="login-form-container">
-        <div className="content box">
+        <div className="content">
 
         <form onSubmit={this.handleSubmit} className="login-form-box">
 
@@ -56,25 +56,25 @@ class SessionForm extends React.Component {
           <div className="login-form">
             <br />
           <p className="session-submit" onClick={(e) => this.handleDemo(e)} value="Continue Demo">Continue Demo</p>
+            <div className="split">
+            <span className="hr">&nbsp;
+            </span>
+            <span>OR</span>
+            <span className="hr">&nbsp;
+            </span>
+            </div>
             <br/>
+
             <div className="fbutton">
-            <label>
               <input type="text"
                 value={this.state.username}
                 onChange={this.update('username')}
                 className="login-input"
                 placeholder="Username"
               />
-            </label>
+
             </div>
             <br/>
-            <div class="split">
-            <span class="hr">&nbsp;
-            </span>
-            <span>OR</span>
-            <span class="hr">&nbsp;
-            </span>
-            </div>
             <div className="fbutton">
             <label>
               <input type="password"
@@ -95,7 +95,7 @@ class SessionForm extends React.Component {
           </div>
           {this.renderErrors()}
         </form>
-        <h1 class="blur"></h1>
+        <div className="blur"></div>
       </div>
       </div>
     );

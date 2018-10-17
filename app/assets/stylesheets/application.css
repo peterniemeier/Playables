@@ -115,23 +115,38 @@ body {
 .login-form-container {
 
   height: 100vh; /* =h */
-  background-image: url(/assets/login-hero.jpg);
+  background-image: url(/assets/login-hero_old.jpg);
   background-size: cover;
+
 }
 
 .login-form-container .content {
-  background: inherit;
+
   height: 100vh;
   margin-left:50px;
   width:400px;
   overflow: hidden;
+  position:absolute;
   box-sizing: border-box;
+  background:rgba(255,255,255,.2);
 
 }
 
 .login-form-box {
 
   color: #FFF;
+}
+.blur {
+    background: inherit;
+    filter:blur(5px);
+    height: 100%;
+}
+.log-options {
+  text-align: center;
+}
+
+.log-options a {
+  text-decoration: underline;
 }
 
 .login-form {
@@ -186,14 +201,49 @@ body {
   border-top: 1px solid #FFF;
 }
 
+.projects {
+  margin-top: 66px;
+  display: flex;
+  justify-content: center;
+  min-width: 1044px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
+.project-index-item {
+  display: inline-block;
+  width: 324px;
+  height: 363px;
+  padding: 12px;
 
-.blur {
-	color:white;
-	font-weight:100;
+}
 
-	.tinted &{
-		color:black;
-		text-shadow:0 1px 1px rgba(255,255,255,.2);
-	}
+.item-image {
+  width: 324px;
+  height: 271px;
+
+}
+
+.cover-info {
+  padding: 10px 13px;
+  height: 85px;
+  width: 297px;
+  box-shadow: 0 1px 0px rgba(0,0,0,0.15);
+  border: 1px solid rgba(0,0,0,0.10);
+
+}
+
+.cover-info .title {
+  font-size:14px;
+  font-weight:bold;
+  padding: 0.5em 0;
+}
+.cover-info .author {
+  color: #999;
+  font-size: 12px;
+}
+
+.cover-info .author a {
+  color: #555;
+
 }

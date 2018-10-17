@@ -4,7 +4,7 @@ import { combineReducers } from 'redux';
 // import tags from './tags_reducer';
 // import comments from './comments_reducer';
 // import steps from './steps_reducer';
-// import projects from './projects_reducer';
+import projects from './projects_reducer';
 import users from './users_reducer';
 
 export default combineReducers({
@@ -12,6 +12,6 @@ export default combineReducers({
   // tags,
   // comments,
   // steps,
-  // projects,
+  projects,
   users,
 });

@@ -2,8 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import SessionForm from '../session_form/session_form';
 import { withRouter } from 'react-router-dom';
+
       // <p className="session-submit" onClick={(e) => processDemo()} value="Continue Demo">Continue Demo</p>
 const Greeting = ({ currentUser, logout, processDemo }) => {
+
 
 
 
@@ -18,8 +20,9 @@ const Greeting = ({ currentUser, logout, processDemo }) => {
   );
   const personalGreeting = () => (
     <hgroup className="header-group">
-      <img src="app/assets/images/icons8-person-64.png" />
-      <h2 className="header-name">Hi, {currentUser.username}!</h2>
+      <div className="avatar">
+        <img src={window.images.avatar} />
+      </div>
       <button className="header-button" onClick={logout}>Log Out</button>
     </hgroup>
   );

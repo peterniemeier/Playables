@@ -18,6 +18,7 @@ const Greeting = ({ currentUser, logout, processDemo }) => {
   );
   const personalGreeting = () => (
     <hgroup className="header-group">
+      <img src="app/assets/images/icons8-person-64.png" />
       <h2 className="header-name">Hi, {currentUser.username}!</h2>
       <button className="header-button" onClick={logout}>Log Out</button>
     </hgroup>

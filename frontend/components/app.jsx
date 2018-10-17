@@ -21,7 +21,7 @@ const App = () => (
   <div>
     <header id="greeting">
       <Link to="/" className="header-link">
-        <h1>Playables</h1>
+        <h1>playables</h1>
       </Link>
       <GreetingContainer />
     </header>

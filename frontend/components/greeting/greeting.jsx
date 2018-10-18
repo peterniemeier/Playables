@@ -18,9 +18,11 @@ const Greeting = ({ currentUser, logout, processDemo }) => {
   const personalGreeting = () => (
 
     <hgroup className="header-group">
-      <div className="create-playable" onClick={() => window.location.replace("/projects/new")}>
+      <Link to={'/projects/new'}>
+      <div className="create-playable">
         Create a Playable
       </div>
+      </Link>
       <div className="profile-nav">
       <div className="avatar">
         <img src={window.images.avatar} />

@@ -285,3 +285,9 @@ body {
   border-color: #d4d4d4;
   background-color: #e6e6e6;
 }
+
+.project-form-box {
+  background-color: #dedede;
+  width: 400px;
+
+}

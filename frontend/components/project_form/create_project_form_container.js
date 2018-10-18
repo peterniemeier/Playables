@@ -3,19 +3,22 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { login } from '../../actions/session_actions';
 import ProjectForm from './project_form';
+import {createProject} from '../../actions/project_actions';
 
 const mapStateToProps = ({ errors }) => {
   return {
     errors: errors.session,
     formType: 'Login',
-    navLink: <Link to="/signup">sign up instead</Link>,
+    project: {title: '', description: '', photoFile: null},
+    steps: [{}]
+    // navLink: <Link to="/signup">sign up instead</Link>,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    processDemo: (demoUser) => dispatch(login(demoUser)),
-    processForm: (user) => dispatch(login(user)),
+    createProject: (project) => dispatch(createProject(project)),
+
   };
 };
 

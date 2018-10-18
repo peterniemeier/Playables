@@ -4,15 +4,8 @@ import { withRouter } from 'react-router-dom';
 class ProjectForm extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   username: '',
-    //   password: ''
-    // };
-    //
-    // this.demoUser = {
-    //   username: 'demouser',
-    //   password: 'demouser'
-    // };
+    this.state = this.props.project;
+    this.steps = this.props.steps;
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -24,14 +17,17 @@ class ProjectForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const user = Object.assign({}, this.state);
-    this.props.processForm(user).then(this.props.history.push(`/`));
+    const project = new FormData();
+    project.append('project[title]', this.state.title);
+    project.append('project[description]', this.state.description);
+    project.append('project[photo]', this.state.photoFile);
+    this.props.createProject(project).then(this.props.history.push(`/`));
   }
 
-  handleDemo(e) {
-    e.preventDefault();
-    this.props.processDemo(this.demoUser).then(this.props.history.push(`/`));
+  handleFile(e) {
+    this.setState({photoFile: e.currentTarget.files[0]});
   }
+
 
   renderErrors() {
     return(
@@ -47,56 +43,46 @@ class ProjectForm extends React.Component {
 
   render() {
     return (
-      <div className="login-form-container">
-        <div className="content">
-
-        <form onSubmit={this.handleSubmit} className="login-form-box">
-
-
-          <div className="login-form">
+      <div className="project-form-container">
+        <div className="project-form-content">
+          <form onSubmit={this.handleSubmit} className="project-form-box">
+            <div className="project-form">
+              <br />
+            <div className="fbutton">
+              <input
+              type="text"
+              placeholder="Title"
+              value={this.state.title}
+              onChange={this.update('title')}
+              />
+            </div>
             <br />
-          <p className="session-submit" onClick={(e) => this.handleDemo(e)} value="Continue Demo">Continue Demo</p>
-            <div className="split">
-            <span className="hr">&nbsp;
-            </span>
-            <span>OR</span>
-            <span className="hr">&nbsp;
-            </span>
-            </div>
-            <br/>
-
             <div className="fbutton">
-              <input type="text"
-                value={this.state.username}
-                onChange={this.update('username')}
-                className="login-input"
-                placeholder="Username"
+              <input
+              type="textbox"
+              placeholder="Description"
+              value={this.state.description}
+              onChange={this.update('description')}
               />
+            </div>
 
+            <div className='fphoto'>
+              <input type='file'
+                onChange={this.handleFile.bind(this)}
+                />
+            </div>
             </div>
             <br/>
-            <div className="fbutton">
-            <label>
-              <input type="password"
-                value={this.state.password}
-                onChange={this.update('password')}
-                className="login-input"
-                placeholder="Password"
-              />
-            </label>
-            </div>
             <br/>
-            <input className="session-submit" type="submit" value={this.props.formType} />
-          </div>
-
+            <input className="project-submit" type="submit" value="Create Playable" />
+          </form>
+        </div>
           <br/>
           <div className="log-options">
-          Please {this.props.formType} or {this.props.navLink}
+          temp
           </div>
           {this.renderErrors()}
-        </form>
         <div className="blur"></div>
-      </div>
       </div>
     );
   }

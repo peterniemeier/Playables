@@ -25,12 +25,15 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.processForm(user).then(this.props.history.push(`/`));
+    return this.props.processForm(user).then(() => this.props.history.push(`/`));
   }
 
-  handleDemo(e) {
+  handleDemo() {
+    return (e) => {
     e.preventDefault();
-    this.props.processDemo(this.demoUser).then(this.props.history.push(`/`));
+
+    return this.props.processDemo(this.demoUser).then(() => this.props.history.push(`/`));
+    }
   }
 
   renderErrors() {
@@ -55,7 +58,7 @@ class SessionForm extends React.Component {
 
           <div className="login-form">
             <br />
-          <p className="session-submit" onClick={(e) => this.handleDemo(e)} value="Continue Demo">Continue Demo</p>
+          <p className="session-submit" onClick={this.handleDemo()} value="Continue Demo">Continue Demo</p>
             <div className="split">
             <span className="hr">&nbsp;
             </span>

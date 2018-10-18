@@ -5,7 +5,14 @@ class Api::ProjectsController < ApplicationController
   end
 
   def create
+    project = Project.new(project_params)
+    project.user_id = current_user.id
 
+    if project.save
+      render '/'
+    else
+      render json: project.errors.full_messages
+    end
   end
 
   private

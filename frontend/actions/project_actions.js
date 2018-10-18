@@ -3,10 +3,16 @@ import * as APIUtil from '../util/project_api_util';
 export const RECEIVE_PROJECTS = 'RECEIVE_PROJECTS';
 export const RECEIVE_PROJECT = 'RECEIVE_PROJECT';
 export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS';
+export const RECEIVE_STEPS = 'RECEIVE_STEPS';
 
 export const receiveProjects = projects => ({
   type: RECEIVE_PROJECTS,
   projects
+});
+
+export const receiveSteps = steps => ({
+  type: RECEIVE_STEPS,
+  steps
 });
 
 export const receiveProject = (project) => ({
@@ -33,6 +39,12 @@ export const fetchProjects = filters => dispatch => (
   ))
 );
 
+export const fetchSteps = id => dispatch => (
+  APIUtil.fetchSteps(id).then(steps => (
+    dispatch(receiveSteps(steps))
+  ))
+);
+
 export const fetchProject = id => dispatch => (
   APIUtil.fetchProject(id).then(payload => (
     dispatch(receiveProject(payload))
@@ -41,6 +53,6 @@ export const fetchProject = id => dispatch => (
 
 export const createProject = project => dispatch => (
   APIUtil.createProject(project).then(project => (
-    dispatch(receiveProject(project))
+    dispatch(receiveProjects(projects))
   ))
 );

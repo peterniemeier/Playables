@@ -1,12 +1,16 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
+
 class ProjectForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.props.project;
-    this.steps = this.props.steps;
+
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleStepChange = this.handleStepChange.bind(this);
+    this.handleAddStep = this.handleAddStep.bind(this);
+    this.handleRemoveStep = this.handleRemoveStep.bind(this);
   }
 
   update(field) {
@@ -21,12 +25,41 @@ class ProjectForm extends React.Component {
     project.append('project[title]', this.state.title);
     project.append('project[description]', this.state.description);
     project.append('project[photo]', this.state.photoFile);
-    this.props.createProject(project).then(this.props.history.push(`/`));
+    const steps = this.steps;
+    this.props.createSteps(steps)
+    this.props.createProject(project).then(this.props.createSteps(steps)).then(this.props.history.push(`/`));
   }
 
   handleFile(e) {
     this.setState({photoFile: e.currentTarget.files[0]});
   }
+
+  handleStepChange = (idx) => (e) => {
+  const newStep = this.state.steps.map((step, sidx) => {
+    if (idx !== sidx) return step;
+    return { ...step, body: e.target.value};
+  });
+    this.setState({ steps: newStep });
+  }
+
+
+  handleAddStep = () => {
+    this.setState({
+      steps: this.state.steps.concat([{ body: '', photoFile: null}])
+    });
+  }
+
+  handleRemoveStep = (idx) => () => {
+  this.setState({ steps: this.state.steps.filter((s, sidx) => idx !== sidx) });
+}
+
+handleStepFile = (idx) => (e) => {
+const step = this.state.steps.map((step, sidx) => {
+  if (idx !== sidx) return step;
+  return { ...step, photoFile: e.target.value};
+});
+  this.setState({ steps: step });
+}
 
 
   renderErrors() {
@@ -65,12 +98,30 @@ class ProjectForm extends React.Component {
               onChange={this.update('description')}
               />
             </div>
-
+              <br />
             <div className='fphoto'>
               <input type='file'
                 onChange={this.handleFile.bind(this)}
                 />
             </div>
+              <br />
+                {this.state.steps.map((step, idx) => (
+                          <div className="step">
+                            <input
+                              type="text"
+                              placeholder={`Step #${idx + 1}`}
+                              value={step.body}
+                              onChange={this.handleStepChange(idx)}
+                            />
+                            <input type='file'
+                              onChange={this.handleStepFile(idx).bind(this)}
+                              />
+                          <button type="button" onClick={this.handleRemoveStep(idx)} className="fbutton">Remove Step</button>
+                          </div>
+                        ))}
+                        <button type="button" onClick={this.handleAddStep} className="fbutton">Add Step</button>
+
+
             </div>
             <br/>
             <br/>

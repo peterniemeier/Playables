@@ -6,12 +6,13 @@ import { combineReducers } from 'redux';
 // import steps from './steps_reducer';
 import projects from './projects_reducer';
 import users from './users_reducer';
+import steps from './steps_reducer';
 
 export default combineReducers({
   // projectTags,
   // tags,
   // comments,
-  // steps,
+  steps,
   projects,
   users,
 });

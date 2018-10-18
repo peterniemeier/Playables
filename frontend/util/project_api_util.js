@@ -29,6 +29,13 @@ export const createStep = step => (
   })
 );
 
+export const fetchSteps = id => (
+  $.ajax({
+    method: 'GET',
+    url: `api/projects/${id}/steps`
+  })
+);
+
 export const createProject = project => (
   $.ajax({
     method: 'POST',

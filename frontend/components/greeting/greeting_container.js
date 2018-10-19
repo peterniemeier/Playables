@@ -6,6 +6,7 @@ import Greeting from './greeting';
 const mapStateToProps = ({ session, entities: { users } }) => {
   return {
     currentUser: users[session.id],
+    loggedIn: Boolean(session.id)
   };
 };
 

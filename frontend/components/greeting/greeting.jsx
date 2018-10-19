@@ -4,7 +4,7 @@ import SessionForm from '../session_form/session_form';
 import { withRouter } from 'react-router-dom';
 
       // <p className="session-submit" onClick={(e) => processDemo()} value="Continue Demo">Continue Demo</p>
-const Greeting = ({ currentUser, logout, processDemo }) => {
+const Greeting = ({ currentUser,loggedIn, logout, processDemo }) => {
 
   const sessionLinks = () => (
 
@@ -33,7 +33,7 @@ const Greeting = ({ currentUser, logout, processDemo }) => {
   );
 
 
-  return currentUser ? personalGreeting() : sessionLinks();
+  return loggedIn ? personalGreeting() : sessionLinks();
 };
 
 

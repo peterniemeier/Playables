@@ -51,8 +51,10 @@ export const fetchSteps = id => dispatch => (
   ))
 );
 
-export const createStep = step => dispatch => (
-  APIUtil.createStep(step)
+export const createSteps = steps => dispatch => (
+  APIUtil.createStep(steps).then(steps => (
+    dispatch(receiveSteps(steps))
+  ))
 );
 
 export const fetchProject = id => dispatch => (
@@ -63,6 +65,6 @@ export const fetchProject = id => dispatch => (
 
 export const createProject = project => dispatch => (
   APIUtil.createProject(project).then(project => (
-    dispatch(receiveProjects(project))
+    dispatch(receiveProject(project))
   ))
 );

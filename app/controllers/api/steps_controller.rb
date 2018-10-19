@@ -4,6 +4,7 @@ class Api::StepsController < ApplicationController
     step.project_id = Project.last.id
 
     if step.save
+      render '/'
     else
       render json: project.errors.full_messages
     end

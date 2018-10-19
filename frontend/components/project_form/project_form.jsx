@@ -25,12 +25,7 @@ class ProjectForm extends React.Component {
     project.append('project[title]', this.state.title);
     project.append('project[description]', this.state.description);
     project.append('project[photo]', this.state.photoFile);
-    this.props.createProject(project);
-    const steps = this.state.steps;
-    for (let i = 0;i < steps.length;i++) {
-    this.props.createStep(steps[i]);
-    }
-    this.props.history.push(`/`);
+    this.props.createProject(project).then(this.props.history.push(`/`));
   }
 
   handleFile(e) {

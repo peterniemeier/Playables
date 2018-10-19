@@ -5,7 +5,7 @@ import { login } from '../../actions/session_actions';
 import ProjectForm from './project_form';
 import {createProject} from '../../actions/project_actions';
 import {updateState} from '../../actions/project_actions';
-import {createStep} from '../../actions/project_actions';
+import {createSteps} from '../../actions/project_actions';
 
 const mapStateToProps = ({ errors }) => {
   return {
@@ -21,7 +21,7 @@ const mapStateToProps = ({ errors }) => {
 const mapDispatchToProps = dispatch => {
   return {
     createProject: (project) => dispatch(createProject(project)),
-    createStep: (step) => dispatch(createStep(step)),
+    createSteps: (steps) => dispatch(createSteps(steps)),
     updateState: (state) => dispatch(updateState(state))
   };
 };

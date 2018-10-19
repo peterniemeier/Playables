@@ -25,9 +25,12 @@ class ProjectForm extends React.Component {
     project.append('project[title]', this.state.title);
     project.append('project[description]', this.state.description);
     project.append('project[photo]', this.state.photoFile);
-    const steps = this.steps;
-    this.props.createSteps(steps)
-    this.props.createProject(project).then(this.props.createSteps(steps)).then(this.props.history.push(`/`));
+    this.props.createProject(project);
+    const steps = this.state.steps;
+    for (let i = 0;i < steps.length;i++) {
+    this.props.createStep(steps[i]);
+    }
+    this.props.history.push(`/`);
   }
 
   handleFile(e) {
@@ -112,14 +115,15 @@ const step = this.state.steps.map((step, sidx) => {
                               placeholder={`Step #${idx + 1}`}
                               value={step.body}
                               onChange={this.handleStepChange(idx)}
+                              className="fbutton"
                             />
                             <input type='file'
                               onChange={this.handleStepFile(idx).bind(this)}
                               />
-                          <button type="button" onClick={this.handleRemoveStep(idx)} className="fbutton">Remove Step</button>
+                          <button type="button" onClick={this.handleRemoveStep(idx)} >Remove Step</button>
                           </div>
                         ))}
-                        <button type="button" onClick={this.handleAddStep} className="fbutton">Add Step</button>
+                        <button type="button" onClick={this.handleAddStep} >Add Step</button>
 
 
             </div>

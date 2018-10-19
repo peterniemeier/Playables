@@ -209,6 +209,12 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
+.projects ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap:wrap;
+
+}
 
 .project-index-item {
   display: inline-block;
@@ -226,7 +232,7 @@ body {
 
 .cover-info {
   padding: 10px 13px;
-  height: 85px;
+  height: 70px;
   width: 297px;
   box-shadow: 0 1px 0px rgba(0,0,0,0.15);
   border: 1px solid rgba(0,0,0,0.10);

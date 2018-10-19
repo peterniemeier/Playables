@@ -25,7 +25,9 @@ export const createStep = step => (
   $.ajax({
     method: 'POST',
     url: 'api/steps',
-    data: { step }
+    data: step,
+    contentType: false,
+    processData: false
   })
 );
 

@@ -27,7 +27,7 @@ const App = () => (
     </header>
 
 <Switch>
-<Route exact path="/projects/new" component={ProjectFormContainer} />
+      <Route exact path="/projects/new" component={ProjectFormContainer} />
       <Route exact path="/projects" component={ProjectIndexContainer} />
       <Route exact path="/" component={ProjectIndexContainer} />
       <AuthRoute exact path="/login" component={LogInFormContainer} />

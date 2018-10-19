@@ -11,7 +11,7 @@ class Api::StepsController < ApplicationController
   end
 
   def step_params
-    params.require(:step).permit(:body, :photo)
+    params.require(:step).permit(:body, :photo, :project_id)
   end
 
 end

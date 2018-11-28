@@ -6,7 +6,7 @@ class ProjectForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.props.project;
-
+    this.state.steps = [];
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleStepChange = this.handleStepChange.bind(this);
     this.handleAddStep = this.handleAddStep.bind(this);
@@ -25,6 +25,17 @@ class ProjectForm extends React.Component {
     project.append('project[title]', this.state.title);
     project.append('project[description]', this.state.description);
     project.append('project[photo]', this.state.photoFile);
+    // let steps = this.state.steps;
+    // for (var i = 0; i < steps.length; i++) {
+    // project.append('project[steps]', steps[i]);
+    // }
+
+    let steps = this.state.steps;
+
+    let project_steps = JSON.stringify(steps);
+    project.append('project[steps]', project_steps);
+    // this.props.createProject(project);
+    debugger
     this.props.createProject(project).then(this.props.history.push(`/`));
   }
 
@@ -104,23 +115,21 @@ const step = this.state.steps.map((step, sidx) => {
             </div>
               <br />
                 {this.state.steps.map((step, idx) => (
-                          <div className="step">
-                            <input
-                              type="text"
-                              placeholder={`Step #${idx + 1}`}
-                              value={step.body}
-                              onChange={this.handleStepChange(idx)}
-                              className="fbutton"
-                            />
-                            <input type='file'
-                              onChange={this.handleStepFile(idx).bind(this)}
-                              />
-                          <button type="button" onClick={this.handleRemoveStep(idx)} >Remove Step</button>
-                          </div>
-                        ))}
-                        <button type="button" onClick={this.handleAddStep} >Add Step</button>
-
-
+                  <div className="step">
+                    <input
+                      type="text"
+                      placeholder={`Step #${idx + 1}`}
+                      value={step.body}
+                      onChange={this.handleStepChange(idx)}
+                      className="fbutton"
+                    />
+                    <input type='file'
+                      onChange={this.handleStepFile(idx).bind(this)}
+                      />
+                  <button type="button" onClick={this.handleRemoveStep(idx)} >Remove Step</button>
+                  </div>
+                ))}
+                <button type="button" onClick={this.handleAddStep} >Add Step</button>
             </div>
             <br/>
             <br/>

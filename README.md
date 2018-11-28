@@ -6,7 +6,7 @@
 
 Playables is inspired by the DIY site Instructables. The focus is on modifications or “how-tos” for video game consoles, peripherals, and arcade cabinets. It uses Rails/PostgreSQL backend with React.js and Redux on the frontend.
 
-The project was designed and built under two-weeks. It is a work in progress
+The project was designed and built under two-weeks. It is a work in progress.
 
 ## Features
   * Handle images with Active Storage Amazon service.

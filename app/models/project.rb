@@ -1,6 +1,6 @@
 class Project < ApplicationRecord
 validates :title, :description, presence: true
-validates :title, length: {minimum: 6, allow_nil: true}
+validates :title, length: {minimum: 2, allow_nil: true}
 
   belongs_to :user,
   primary_key: :id,

@@ -35,7 +35,7 @@ class ProjectForm extends React.Component {
     let project_steps = JSON.stringify(steps);
     project.append('project[steps]', project_steps);
     // this.props.createProject(project);
-    debugger
+    // debugger
     this.props.createProject(project).then(this.props.history.push(`/`));
   }
 

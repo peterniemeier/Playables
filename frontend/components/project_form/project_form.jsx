@@ -7,6 +7,7 @@ class ProjectForm extends React.Component {
     super(props);
     this.state = this.props.project;
     this.state.steps = [];
+    this.state.photoUrl = null;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleStepChange = this.handleStepChange.bind(this);
     this.handleAddStep = this.handleAddStep.bind(this);
@@ -40,7 +41,16 @@ class ProjectForm extends React.Component {
   }
 
   handleFile(e) {
-    this.setState({photoFile: e.currentTarget.files[0]});
+    const file = e.currentTarget.files[0];
+    const fileReader = new FileReader();
+    fileReader.onloadend = () => {
+
+      this.setState({photoFile: file, photoUrl: fileReader.result});
+    };
+    if (file) {
+      fileReader.readAsDataURL(file);
+
+    }
   }
 
   handleStepChange = (idx) => (e) => {
@@ -84,6 +94,7 @@ const step = this.state.steps.map((step, sidx) => {
   }
 
   render() {
+    const preview = this.state.photoUrl ? <img src={this.state.photoUrl} /> : null;
     return (
       <div className="project-form-container">
         <div className="project-form-content">
@@ -113,6 +124,7 @@ const step = this.state.steps.map((step, sidx) => {
                 onChange={this.handleFile.bind(this)}
                 />
             </div>
+            {preview}
               <br />
                 {this.state.steps.map((step, idx) => (
                   <div className="step">
@@ -126,6 +138,7 @@ const step = this.state.steps.map((step, sidx) => {
                     <input type='file'
                       onChange={this.handleStepFile(idx).bind(this)}
                       />
+                    // {step.photoFile}
                   <button type="button" onClick={this.handleRemoveStep(idx)} >Remove Step</button>
                   </div>
                 ))}
